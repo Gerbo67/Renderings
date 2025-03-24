@@ -2452,7 +2452,7 @@ TextureImporter:
         width: 63
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2474,7 +2474,7 @@ TextureImporter:
         width: 63
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2496,7 +2496,7 @@ TextureImporter:
         width: 63
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2505,6 +2505,116 @@ TextureImporter:
       bones: []
       spriteID: 777bf4a4384bdbb4cb11be05cc1cb622
       internalID: -882239736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items_97
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1830
+        width: 72
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0178de3d6ff530f4c866f0ee0f06dd05
+      internalID: -1468397814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items_98
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1862
+        width: 72
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b900f40a27a3204aaffed41082b96c6
+      internalID: 69547633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items_99
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1862
+        width: 72
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7143a076fd5b4f34d83ddb570517911b
+      internalID: 131139973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items_100
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1862
+        width: 72
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0714f56001234af4d949cb679c7b757f
+      internalID: -681148720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items_101
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1862
+        width: 72
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03161ac4a97661b41b715ed3220fbd64
+      internalID: -1728644715
       vertices: []
       indices: 
       edges: []
@@ -2526,6 +2636,8 @@ TextureImporter:
       props and items_0: -1870930993
       props and items_1: -1779726739
       props and items_10: 1993787269
+      props and items_100: -681148720
+      props and items_101: -1728644715
       props and items_11: -1978568041
       props and items_12: 2096340816
       props and items_13: -112769664
@@ -2620,6 +2732,9 @@ TextureImporter:
       props and items_94: -1824545477
       props and items_95: 899113093
       props and items_96: -882239736
+      props and items_97: -1468397814
+      props and items_98: 69547633
+      props and items_99: 131139973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
