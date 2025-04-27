@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Core.Entities;
+using UnityEngine;
 using UnityEngine.AI;
 using Project.Game.Bullet.Scripts; // Asegúrate de que la ruta sea correcta
 
@@ -7,7 +8,7 @@ namespace Project.Game.Enemies.EscapistEnemy
     public enum EnemyState { ShootPosition, Rush, Stuck }
 
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EscapistEnemyController : MonoBehaviour
+    public class EscapistEnemyController : DamageableEntity
     {
         [Header("NavMesh & Movimiento")]
         [SerializeField] private NavMeshAgent agent;
@@ -33,8 +34,13 @@ namespace Project.Game.Enemies.EscapistEnemy
         [Header("Detección de Atasco")]
         [SerializeField] private float stuckVelocityThreshold = 0.1f;
         [SerializeField] private float maxStuckTime = 1.5f;
-
-        // Estado interno
+        
+        [Header("Shield Settings")]
+        [Tooltip("Radio del escudo que se crea cuando el enemigo está en Rush")]
+        public float shieldRadius = 0.5f;
+        // Referencia al escudo activo
+        private EnemyShieldController activeShield;
+        
         private EnemyState currentState;
         private Transform player;
         private float shootTimer = 0f;
@@ -47,6 +53,8 @@ namespace Project.Game.Enemies.EscapistEnemy
         {
             if (agent == null)
                 agent = GetComponent<NavMeshAgent>();
+            
+            base.Awake();
 
             // Configuración para 2D
             agent.updateRotation = false;
@@ -94,6 +102,29 @@ namespace Project.Game.Enemies.EscapistEnemy
             }
             if (currentState == EnemyState.Stuck && agent.velocity.magnitude >= stuckVelocityThreshold * 2f)
                 currentState = EnemyState.ShootPosition;
+            
+            // Administrar el escudo según el estado
+            if (currentState == EnemyState.Rush)
+            {
+                if (activeShield == null)
+                {
+                    // Crear el escudo de forma programática como hijo del enemigo
+                    GameObject shieldObj = new GameObject("EnemyShield");
+                    shieldObj.transform.SetParent(transform);
+                    shieldObj.transform.localPosition = Vector3.zero;
+                    activeShield = shieldObj.AddComponent<EnemyShieldController>();
+                    activeShield.shieldRadius = shieldRadius;
+                }
+            }
+            else
+            {
+                if (activeShield != null)
+                {
+                    Destroy(activeShield.gameObject);
+                    activeShield = null;
+                }
+            }
+            
 
             // Ejecutar comportamiento según estado
             switch (currentState)
@@ -263,6 +294,13 @@ namespace Project.Game.Enemies.EscapistEnemy
             Gizmos.DrawWireSphere(transform.position, fleeDetectionRadius);
             Gizmos.color = Color.blue;
             Gizmos.DrawSphere(currentTargetPosition, 0.3f);
+        }
+        
+        protected override void Die()
+        {
+            // Destruye al enemigo al quedarse sin vida
+            Debug.Log($"{name} ha sido eliminado.");
+            Destroy(gameObject);
         }
     }
 }

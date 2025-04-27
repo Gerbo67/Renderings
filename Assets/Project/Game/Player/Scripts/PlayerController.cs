@@ -1,11 +1,13 @@
+using Project.Core.Entities;
 using Project.Game.Bullet.Scripts;
 using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine.SceneManagement;
 
 namespace Project.Game.Player.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(PlayerInputHandler))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : DamageableEntity
     {
         private Rigidbody2D _rb;
         private Animator _animator;
@@ -27,6 +29,7 @@ namespace Project.Game.Player.Scripts
             _animator = GetComponent<Animator>();
             _input = GetComponent<PlayerInputHandler>();
             _impulseSource = GetComponent<CinemachineImpulseSource>();
+            base.Awake();
         }
 
         private void Update()
@@ -106,6 +109,11 @@ namespace Project.Game.Player.Scripts
         public void ShootCameraShake()
         {
             _impulseSource.GenerateImpulse();
+        }
+        
+        protected override void Die()
+        {
+            SceneManager.LoadScene("MenuScene");
         }
     }
 }

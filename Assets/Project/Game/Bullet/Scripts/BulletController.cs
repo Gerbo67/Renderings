@@ -1,3 +1,4 @@
+using Project.Core.Interfaces;
 using UnityEngine;
 
 namespace Project.Game.Bullet.Scripts
@@ -25,6 +26,13 @@ namespace Project.Game.Bullet.Scripts
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            // Intentamos obtener la interfaz IDamageable
+            var dmg = other.collider.GetComponent(typeof(IDamageable)) as IDamageable;
+            if (dmg != null)
+            {
+                dmg.TakeDamage(damage);
+            }
+
             SpawnImpactParticles();
             Destroy(gameObject);
         }
